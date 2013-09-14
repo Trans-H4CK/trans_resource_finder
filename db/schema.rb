@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130914204607) do
+ActiveRecord::Schema.define(:version => 20130914204859) do
 
   create_table "categories", :force => true do |t|
     t.string "name"
@@ -38,7 +38,11 @@ ActiveRecord::Schema.define(:version => 20130914204607) do
     t.integer  "service_quality_rating"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
-    t.integer  "category_id"
+    t.integer  "category_id"                                                                          :null => false
+    t.string   "geocoded_street_address"
+    t.string   "geocoded_city_address"
+    t.string   "geocoded_zip"
+    t.spatial  "geocoded_coordinates",      :limit => {:srid=>4326, :type=>"point", :geographic=>true}
   end
 
   add_index "resources", ["category_id"], :name => "index_resources_on_category_id"

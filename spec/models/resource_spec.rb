@@ -22,6 +22,12 @@ describe Resource do
       it { should have_db_column(:service_quality_rating) }
 
       it { should have_db_column(:category_id) }
+      context "geocoding information" do
+        it { should have_db_column(:geocoded_street_address) }
+        it { should have_db_column(:geocoded_city_address) }
+        it { should have_db_column(:geocoded_zip) }
+        it { should have_db_column(:geocoded_coordinates) }
+      end
     end
 
     describe "associations" do
