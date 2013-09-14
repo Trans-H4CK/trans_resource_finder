@@ -20,10 +20,12 @@ describe Resource do
       it { should have_db_column(:accessibility_rating) }
       it { should have_db_column(:trans_friendliness_rating) }
       it { should have_db_column(:service_quality_rating) }
+
+      it { should have_db_column(:category_id) }
     end
 
     describe "associations" do
-
+      it { should belong_to(:category) }
     end
   end
 

@@ -11,7 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130914201858) do
+ActiveRecord::Schema.define(:version => 20130914204607) do
+
+  create_table "categories", :force => true do |t|
+    t.string "name"
+    t.string "internal_name"
+  end
 
   create_table "resources", :force => true do |t|
     t.string   "name"
@@ -33,6 +38,9 @@ ActiveRecord::Schema.define(:version => 20130914201858) do
     t.integer  "service_quality_rating"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
+    t.integer  "category_id"
   end
+
+  add_index "resources", ["category_id"], :name => "index_resources_on_category_id"
 
 end
