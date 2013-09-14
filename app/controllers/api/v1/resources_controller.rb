@@ -13,17 +13,18 @@ class Api::V1::ResourcesController < ApplicationController
       @category = Category.where(:name => @category_string).first
       if @category
         @resources = @resources.where(:category_id => @category.id)
-      else
-        @resources = @resources.all
       end
+    end
+
+    @zip_code = params[:zip_code].try(:to_i)
+    if @zip_code
+      @resources = RangeQuery.new(@resources).with_range_from(@zip_code)
+      @resources = @resources.order('range ASC')
     else
-      @resources = @resources.all
+      @resources = @resources.order('name ASC')
     end
 
     respond_with @resources
   end
 
-  def geocode(zip_code)
-    Rails.application.config.geocoder.geocode(:zipcode => zip_code)
-  end
 end
