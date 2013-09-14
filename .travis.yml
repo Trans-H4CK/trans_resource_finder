@@ -15,7 +15,7 @@ deploy:
   api_key:
     secure: LWiNHgauTcWXOvh1hFc04OwB7aKw+qLqpZh0Vmc5FjqB9KPHMf1RX6BDckz/8QcoD9KdofuQtgaLWrRnk/rKxGpz5RtXhosua/WkV6jPG6GAcQn43cHOHG1QzPah0lvf1qOeHZUUotDRBCOhXsAGOq9Kyrq9QF2opcqDYTMJGFg=
   app: trans-resource-finder
-    run: "rake db:migrate"
+  run: "rake db:migrate"
   on:
     repo: Trans-H4CK/trans_resource_finder
     rvm: 1.9.3
