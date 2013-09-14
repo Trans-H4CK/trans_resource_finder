@@ -34,4 +34,6 @@ TransResourceFinder::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  config.geocoder = Geocoder::FakeTAMU
 end

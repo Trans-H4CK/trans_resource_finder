@@ -12,6 +12,7 @@ gem 'figaro'
 gem 'pg'
 gem 'rgeo'
 gem 'activerecord-postgis-adapter'
+gem 'typhoeus'
 
 group :development do
   gem 'better_errors'
