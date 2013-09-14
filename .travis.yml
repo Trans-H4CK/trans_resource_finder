@@ -1,15 +1,41 @@
 language: ruby
 rvm:
-- 1.9.3
+  - 1.9.3
+
 env:
-- DB=postgresql
+  - DB=postgresql
+
 script:
-- RAILS_ENV=test bundle exec rake db:migrate --trace
-- bundle exec rake db:test:prepare
-- bundle exec rake
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rake
+
+install:
+  # Add PPA for PostGIS 2.x
+  - sudo apt-add-repository -y ppa:sharpie/postgis-nightly;
+  - sudo apt-get install postgresql-9.1-postgis -q
+
 before_script:
-- cp config/database.travis.yml config/database.yml
-- psql -c 'create database trans_resource_finder_test' -U postgres
+  - cp config/database.travis.yml config/database.yml
+
+# Create database user "gis"
+  - psql -c "CREATE ROLE gis PASSWORD 'gis' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;" -U postgres
+
+  # Create database "gis"
+  - psql -c 'CREATE DATABASE trans_resource_finder_test;' -U postgres
+
+  # Create schema "gis" into database "gis"
+  - psql -d trans_resource_finder_test -c 'CREATE SCHEMA gis;' -U postgres
+
+  # Grant CREATE permission on database "gis" to role "gis"
+  - psql -c 'GRANT CREATE ON DATABASE trans_resource_finder_test TO "gis";' -U postgres
+
+  # Grant USAGE and CREATE permission on schema "gis" to role "gis"
+  - psql -d trans_resource_finder_test -c 'GRANT USAGE,CREATE ON SCHEMA gis TO "gis";' -U postgres
+
+  # Add PostGIS extension to "gis" database
+  - psql -d trans_resource_finder_test -U postgres -c "CREATE EXTENSION postgis;";
+
 deploy:
   provider: heroku
   api_key:
