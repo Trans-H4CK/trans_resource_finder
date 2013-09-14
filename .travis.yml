@@ -9,4 +9,4 @@ script:
 - bundle exec rake
 before_script:
 - cp config/database.travis.yml config/database.yml
-- psql -c 'create database boardgames_test' -U postgres
+- psql -c 'create database trans_resource_finder_test' -U postgres
