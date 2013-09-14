@@ -7,11 +7,17 @@ class Api::V1::ResourcesController < ApplicationController
   def index
     @category_string = params[:category]
 
+    @resources = Resource
+
     if @category_string
       @category = Category.where(:name => @category_string).first
-      @resources = Resource.where(:category_id => @category.id)
+      if @category
+        @resources = @resources.where(:category_id => @category.id)
+      else
+        @resources = @resources.all
+      end
     else
-      @resources = Resource.all
+      @resources = @resources.all
     end
 
     respond_with @resources
