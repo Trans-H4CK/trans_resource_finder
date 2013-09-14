@@ -10,6 +10,9 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'figaro'
 gem 'pg'
+gem 'rgeo'
+gem 'activerecord-postgis-adapter'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
