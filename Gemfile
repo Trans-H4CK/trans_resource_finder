@@ -13,6 +13,8 @@ gem 'pg'
 gem 'rgeo'
 gem 'activerecord-postgis-adapter'
 
+gem 'active_model_serializers'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]

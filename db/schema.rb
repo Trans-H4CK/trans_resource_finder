@@ -36,9 +36,9 @@ ActiveRecord::Schema.define(:version => 20130914204859) do
     t.integer  "accessibility_rating"
     t.integer  "trans_friendliness_rating"
     t.integer  "service_quality_rating"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-    t.integer  "category_id"                                                                          :null => false
+    t.datetime "created_at",                                                                            :null => false
+    t.datetime "updated_at",                                                                            :null => false
+    t.integer  "category_id"
     t.string   "geocoded_street_address"
     t.string   "geocoded_city_address"
     t.string   "geocoded_zip"
