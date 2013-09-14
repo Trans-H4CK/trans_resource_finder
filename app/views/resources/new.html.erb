@@ -1,0 +1,54 @@
+<%= form_for @resource do |f| %>
+  <%= f.label :name %>:
+  <%= f.text_field :name %><br />
+
+  <%= f.label :accessibility_rating %>:
+  <%= f.number_field :accessibility_rating %><br />
+
+  <%= f.label :trans_friendliness_rating %>:
+  <%= f.number_field :trans_friendliness_rating %><br />
+
+  <%= f.label :service_quality_rating %>:
+  <%= f.number_field :service_quality_rating %><br />
+
+  <%= f.label :street_address_1%>:
+  <%= f.text_field :street_address_1 %><br />
+
+  <%= f.label :street_address_2%>:
+  <%= f.text_field :street_address_2 %><br />
+
+  <%= f.label :city%>:
+  <%= f.text_field :city %><br />
+
+  <%= f.label :state%>:
+  <%= f.text_field :state %><br />
+
+  <%= f.label :zip%>:
+  <%= f.text_field :zip %><br />
+
+  <%= f.label :phone%>:
+  <%= f.telephone_field :phone %><br />
+
+  <%= f.label :website%>:
+  <%= f.text_field :website %><br />
+
+  <%= f.label :email%>:
+  <%= f.email_field :email %><br />
+
+  <%= f.label :contact_name%>:
+  <%= f.text_field :contact_name %><br />
+
+  <%= f.label :services_offerec%>:
+  <%= f.text_area :services_offered %><br />
+
+  <%= f.label :people_served%>:
+  <%= f.text_area :people_served%><br />
+
+  <%= f.label :accessibility%>:
+  <%= f.text_area :accessibility %><br />
+
+	<%= f.label :notes%>:
+  <%= f.text_area :notes %><br />
+
+  <%= f.submit %>
+<% end %>
