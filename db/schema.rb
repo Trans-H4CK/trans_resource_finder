@@ -38,11 +38,11 @@ ActiveRecord::Schema.define(:version => 20130914204859) do
     t.integer  "service_quality_rating"
     t.datetime "created_at",                                                                            :null => false
     t.datetime "updated_at",                                                                            :null => false
+    t.integer  "category_id"
     t.string   "geocoded_street_address"
     t.string   "geocoded_city_address"
     t.string   "geocoded_zip"
     t.spatial  "geocoded_coordinates",      :limit => {:srid=>4326, :type=>"point", :geographic=>true}
-    t.integer  "category_id"
   end
 
   add_index "resources", ["category_id"], :name => "index_resources_on_category_id"
