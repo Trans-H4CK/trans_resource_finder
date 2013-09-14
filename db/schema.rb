@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130914201858) do
+ActiveRecord::Schema.define(:version => 20130914204859) do
 
   create_table "resources", :force => true do |t|
     t.string   "name"
@@ -31,8 +31,12 @@ ActiveRecord::Schema.define(:version => 20130914201858) do
     t.integer  "accessibility_rating"
     t.integer  "trans_friendliness_rating"
     t.integer  "service_quality_rating"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at",                                                                            :null => false
+    t.datetime "updated_at",                                                                            :null => false
+    t.string   "geocoded_street_address"
+    t.string   "geocoded_city_address"
+    t.string   "geocoded_zip"
+    t.spatial  "geocoded_coordinates",      :limit => {:srid=>4326, :type=>"point", :geographic=>true}
   end
 
 end
