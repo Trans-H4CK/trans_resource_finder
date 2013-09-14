@@ -14,6 +14,8 @@ describe Category do
 
 
   describe "factory" do
+    let!(:resource) { FactoryGirl.create(:resource) }
 
+    it { resource.should be_valid }
   end
 end

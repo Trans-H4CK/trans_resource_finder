@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :resource do
+    name "Shelter 1"
     street_address_1 "123 Fake St."
     street_address_2 ""
     city "Los Angeles"
