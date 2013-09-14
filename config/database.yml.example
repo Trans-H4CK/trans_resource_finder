@@ -1,6 +1,16 @@
 development: &development
   adapter: postgis
   database: trf_dev
+  encoding: unicode
+  reconnect: false
+  username:
+  password:
+  host: localhost
+  postgis_extension: true
+  schema_search_path: public,postgis
+  pool: 5
+  su_username:      # substitute a superuser for the database
+  su_password:      # substitute the superuser's password
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
