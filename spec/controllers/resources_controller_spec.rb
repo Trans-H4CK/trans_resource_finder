@@ -10,14 +10,14 @@ describe Api::V1::ResourcesController do
   end
 
   let! :resource_1 do
-    resource = FactoryGirl.create(:resource)
+    resource = FactoryGirl.create(:resource, :zip => 10001)
     resource.category = category_1
     resource.save
     resource
   end
 
   let! :resource_2 do
-    resource = FactoryGirl.create(:resource)
+    resource = FactoryGirl.create(:resource, :zip => 90007)
     resource.category = category_2
     resource.save
     resource
@@ -26,7 +26,7 @@ describe Api::V1::ResourcesController do
   describe "GET index" do
     it "should return all results by default" do
       get :index
-      assigns[:resources].should == Resource.all
+      assigns[:resources].should have(2).resources
     end
 
     it "should return only results for category when category is passed" do
@@ -34,5 +34,12 @@ describe Api::V1::ResourcesController do
       assigns[:resources].should include(resource_1)
       assigns[:resources].should_not include(resource_2)
     end
+
+    it "should return results in distance order" do
+      get :index, {:zip_code => "91423"}
+      assigns[:resources].first.should == resource_2
+      assigns[:resources].last.should == resource_1
+    end
   end
+
 end
