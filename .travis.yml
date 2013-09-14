@@ -10,3 +10,12 @@ script:
 before_script:
 - cp config/database.travis.yml config/database.yml
 - psql -c 'create database trans_resource_finder_test' -U postgres
+deploy:
+  provider: heroku
+  api_key:
+    secure: LWiNHgauTcWXOvh1hFc04OwB7aKw+qLqpZh0Vmc5FjqB9KPHMf1RX6BDckz/8QcoD9KdofuQtgaLWrRnk/rKxGpz5RtXhosua/WkV6jPG6GAcQn43cHOHG1QzPah0lvf1qOeHZUUotDRBCOhXsAGOq9Kyrq9QF2opcqDYTMJGFg=
+  app: trans-resource-finder
+    run: "rake db:migrate"
+  on:
+    repo: Trans-H4CK/trans_resource_finder
+    rvm: 1.9.3
