@@ -3,6 +3,8 @@ class Resource < ActiveRecord::Base
 
   set_rgeo_factory_for_column(:geocoded_coordinates, RGeo::Geographic.simple_mercator_factory)
 
+  belongs_to :category
+
   before_validation :geocode_address
 
   validates_presence_of :street_address_1, :city, :state, :zip

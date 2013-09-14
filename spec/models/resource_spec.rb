@@ -20,6 +20,8 @@ describe Resource do
       it { should have_db_column(:accessibility_rating) }
       it { should have_db_column(:trans_friendliness_rating) }
       it { should have_db_column(:service_quality_rating) }
+
+      it { should have_db_column(:category_id) }
       context "geocoding information" do
         it { should have_db_column(:geocoded_street_address) }
         it { should have_db_column(:geocoded_city_address) }
@@ -29,7 +31,7 @@ describe Resource do
     end
 
     describe "associations" do
-
+      it { should belong_to(:category) }
     end
   end
 
