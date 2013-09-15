@@ -1,7 +1,10 @@
 class ResourcesController < ApplicationController
 
   def index
+    @categories = Category.all
 
+    resource_search = ResourceSearch.new(params)
+    @resources = resource_search.matches
   end
 
 	def new

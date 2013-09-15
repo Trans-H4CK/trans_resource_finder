@@ -1,0 +1,24 @@
+<section id="map-section">
+  <header class="clearfix">
+
+    <form action="" class="width">
+      <h3>Find trans-friendly services:</h3>
+      <div class="form-responsive">
+        <div class="styled-select">
+          <%= collection_select(:resource, :category_id, @categories, :id, :name, :prompt => true) %>
+        </div>
+        <div class="form-responsive-2">
+          <%= text_field_tag :zip, nil, :maxlength => 5, :placeholder => "Zip Code" %>
+          <%= submit_tag "Go!" %>
+        </div><!-- /form-responsive-2 -->
+      </div><!-- /form-responsive -->
+    </form>
+  </header>
+  <div id="map-container">
+    <div id="map">
+      Map will go here.
+    </div>
+  </div>
+</section><!-- /map -->
+
+<%= render :partial => 'results' %>

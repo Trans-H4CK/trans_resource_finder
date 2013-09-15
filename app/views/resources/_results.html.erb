@@ -1,0 +1,10 @@
+<section id="results">
+  <div class="width">
+    <%= link_to "Add a resource +", new_resource_path, :class => 'add-resource' %>
+
+    <ol>
+      <%= render @resources %>
+    </ol>
+  </div>
+
+</section><!-- /results -->
