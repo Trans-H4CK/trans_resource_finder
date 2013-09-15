@@ -12,7 +12,7 @@ script:
 
 before_install:
   # Install PostGIS 2.0
-  - sudo apt-add-repository ppa:ubuntugis/ubuntugis-stable
+  - echo "yes" | sudo apt-add-repository ppa:ubuntugis/ppa
   - sudo apt-get update
   - sudo apt-get install -qq libgeos-dev libproj-dev postgresql-9.1-postgis
   - sudo apt-get install -qq libgeos++-dev
@@ -20,9 +20,23 @@ before_install:
 before_script:
   - cp config/database.travis.yml config/database.yml
 
-  # Create PostGIS extension
-  - createdb -U postgres trans_resource_finder_test
-  - psql -U postgres -d trans_resource_finder_test -c "CREATE EXTENSION postgis;"
+  # Create database user "gis"
+  - psql -c "CREATE ROLE postgis PASSWORD 'postgis' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;" -U postgres
+
+  # Create database "gis"
+  - psql -c 'CREATE DATABASE trans_resource_finder_test;' -U postgres
+
+  # Create schema "gis" into database "gis"
+  - psql -d trans_resource_finder_test -c 'CREATE SCHEMA postgis;' -U postgres
+
+  # Grant CREATE permission on database "gis" to role "gis"
+  - psql -c 'GRANT CREATE ON DATABASE trans_resource_finder_test TO "postgis";' -U postgres
+
+  # Grant USAGE and CREATE permission on schema "gis" to role "gis"
+  - psql -d trans_resource_finder_test -c 'GRANT USAGE,CREATE ON SCHEMA postgis TO "postgis";' -U postgres
+
+  # Add PostGIS extension to "gis" database
+  - psql -d trans_resource_finder_test -U postgres -c "CREATE EXTENSION postgis;";
 
 deploy:
   provider: heroku
