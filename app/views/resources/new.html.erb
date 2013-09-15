@@ -2,6 +2,10 @@
   <%= f.label :name %>:
   <%= f.text_field :name %><br />
 
+  <%= f.label :category %>:
+  <%= f.collection_select( :category_id, Category.all, :id, :name) %><br />
+
+
   <%= f.label :accessibility_rating %>:
   <%= f.number_field :accessibility_rating %><br />
 
