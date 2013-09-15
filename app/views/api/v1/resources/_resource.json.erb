@@ -17,7 +17,11 @@
     "notes": "<%= resource.notes.gsub("\n", "\\n") %>",
     "accessibility_rating": <%= resource.accessibility_rating %>,
     "trans_friendliness_rating": <%= resource.trans_friendliness_rating %>,
-    "service_quality_rating": <%= resource.service_quality_rating %>
+    "service_quality_rating": <%= resource.service_quality_rating %>,
+    "category": {
+      "id": <%= resource.category.id %>,
+      "name": <%= resource.category.name %>
+    }
   },
   "geometry": {
     "type": "Point",
