@@ -1,6 +1,6 @@
 TransResourceFinder::Application.routes.draw do
 
-	root :to => "resources#new"
+	root :to => "resources#index"
   namespace :api, :defaults => {:format => 'json'} do
     namespace :v1, :constraints => ApiConstraints.new(:version => 1) do
       resources :resources, :only => [:show, :index]

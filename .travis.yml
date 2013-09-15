@@ -1,49 +1,36 @@
 language: ruby
 rvm:
-  - 1.9.3
-
+- 1.9.3
 env:
+  matrix:
   - DB=postgresql
-
+  global:
+    secure: fGqOKuzOLgoGnjWAF8seGnzkwAVJ2ooMmK8mZfYSAmky5h/YK9QN7JOl5WOqc+Rv1s1Jlg/wrXyrzjDEZgUUFHrGjnRfUxZRN5B73axcrNqEoqorL9ra2AKLq68lCI8w20seNoMEutJ48lvhN3ZbHP1xCgN88qYy4eV8kW+xoSw=
 script:
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
-  - bundle exec rake db:test:prepare
-  - bundle exec rake
-
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rake
 before_install:
-  # Install PostGIS 2.0
-  - echo "yes" | sudo apt-add-repository ppa:ubuntugis/ppa
-  - sudo apt-get update
-  - sudo apt-get install -qq libgeos-dev libproj-dev postgresql-9.1-postgis
-  - sudo apt-get install -qq libgeos++-dev
-
+- echo "yes" | sudo apt-add-repository ppa:ubuntugis/ppa
+- sudo apt-get update
+- sudo apt-get install -qq libgeos-dev libproj-dev postgresql-9.1-postgis
+- sudo apt-get install -qq libgeos++-dev
 before_script:
-  - cp config/database.travis.yml config/database.yml
-
-  # Create database user "gis"
-  - psql -c "CREATE ROLE postgis PASSWORD 'postgis' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;" -U postgres
-
-  # Create database "gis"
-  - psql -c 'CREATE DATABASE trans_resource_finder_test;' -U postgres
-
-  # Create schema "gis" into database "gis"
-  - psql -d trans_resource_finder_test -c 'CREATE SCHEMA postgis;' -U postgres
-
-  # Grant CREATE permission on database "gis" to role "gis"
-  - psql -c 'GRANT CREATE ON DATABASE trans_resource_finder_test TO "postgis";' -U postgres
-
-  # Grant USAGE and CREATE permission on schema "gis" to role "gis"
-  - psql -d trans_resource_finder_test -c 'GRANT USAGE,CREATE ON SCHEMA postgis TO "postgis";' -U postgres
-
-  # Add PostGIS extension to "gis" database
-  - psql -d trans_resource_finder_test -U postgres -c "CREATE EXTENSION postgis;";
-
+- cp config/database.travis.yml config/database.yml
+- psql -c "CREATE ROLE postgis PASSWORD 'postgis' SUPERUSER CREATEDB CREATEROLE INHERIT
+  LOGIN;" -U postgres
+- psql -c 'CREATE DATABASE trans_resource_finder_test;' -U postgres
+- psql -d trans_resource_finder_test -c 'CREATE SCHEMA postgis;' -U postgres
+- psql -c 'GRANT CREATE ON DATABASE trans_resource_finder_test TO "postgis";' -U postgres
+- psql -d trans_resource_finder_test -c 'GRANT USAGE,CREATE ON SCHEMA postgis TO "postgis";'
+  -U postgres
+- psql -d trans_resource_finder_test -U postgres -c "CREATE EXTENSION postgis;";
 deploy:
   provider: heroku
   api_key:
     secure: LWiNHgauTcWXOvh1hFc04OwB7aKw+qLqpZh0Vmc5FjqB9KPHMf1RX6BDckz/8QcoD9KdofuQtgaLWrRnk/rKxGpz5RtXhosua/WkV6jPG6GAcQn43cHOHG1QzPah0lvf1qOeHZUUotDRBCOhXsAGOq9Kyrq9QF2opcqDYTMJGFg=
   app: trans-resource-finder
-  run: "rake db:migrate"
+  run: rake db:migrate
   on:
     repo: Trans-H4CK/trans_resource_finder
     rvm: 1.9.3
