@@ -10,31 +10,19 @@ script:
   - bundle exec rake db:test:prepare
   - bundle exec rake
 
-install:
-  # Add PPA for PostGIS 2.x
-  - sudo apt-add-repository -y ppa:sharpie/postgis-nightly;
-  - sudo apt-get install postgresql-9.1-postgis -q
+before_install:
+  # Install PostGIS 2.0
+  - sudo apt-add-repository ppa:ubuntugis/ubuntugis-unstable
+  - sudo apt-get update
+  - sudo apt-get install -qq libgeos-dev libproj-dev postgresql-9.1-postgis
+  - sudo apt-get install -qq libgeos++-dev
 
 before_script:
   - cp config/database.travis.yml config/database.yml
 
-# Create database user "gis"
-  - psql -c "CREATE ROLE gis PASSWORD 'gis' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;" -U postgres
-
-  # Create database "gis"
-  - psql -c 'CREATE DATABASE trans_resource_finder_test;' -U postgres
-
-  # Create schema "gis" into database "gis"
-  - psql -d trans_resource_finder_test -c 'CREATE SCHEMA gis;' -U postgres
-
-  # Grant CREATE permission on database "gis" to role "gis"
-  - psql -c 'GRANT CREATE ON DATABASE trans_resource_finder_test TO "gis";' -U postgres
-
-  # Grant USAGE and CREATE permission on schema "gis" to role "gis"
-  - psql -d trans_resource_finder_test -c 'GRANT USAGE,CREATE ON SCHEMA gis TO "gis";' -U postgres
-
-  # Add PostGIS extension to "gis" database
-  - psql -d trans_resource_finder_test -U postgres -c "CREATE EXTENSION postgis;";
+  # Create PostGIS extension
+  - createdb -U postgres trans_resource_finder_test
+  - psql -U postgres -d trans_resource_finder_test -c "CREATE EXTENSION postgis;"
 
 deploy:
   provider: heroku
