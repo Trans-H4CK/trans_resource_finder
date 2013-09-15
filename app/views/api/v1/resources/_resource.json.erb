@@ -1,0 +1,26 @@
+{
+  "type": "Feature",
+  "properties": {
+    "name":             "<%= resource.name %>",
+    "street_address_1": "<%= resource.street_address_1 %>",
+    "street_address_2": "<%= resource.street_address_2 %>",
+    "city": "<%= resource.city %>",
+    "state": "<%= resource.state %>",
+    "zip": "<%= resource.zip %>",
+    "phone": "<%= resource.phone %>",
+    "website": "<%= resource.website %>",
+    "email": "<%= resource.email %>",
+    "contact_name": "<%= resource.contact_name %>",
+    "services_offered": "<%= resource.services_offered %>",
+    "people_served": "<%= resource.people_served %>",
+    "accessibility": "<%= resource.accessibility %>",
+    "notes": "<%= resource.notes %>",
+    "accessibility_rating": <%= resource.accessibility_rating %>,
+    "trans_friendliness_rating": <%= resource.trans_friendliness_rating %>,
+    "service_quality_rating": <%= resource.service_quality_rating %>
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [ <%= resource.geocoded_coordinates.longitude %>, <%= resource.geocoded_coordinates.latitude %>]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "resources": [
+    <% @resources.each do |resource| %>
+      <%= render 'resource', :resource => resource %> <%= ", " unless resource == @resources.last %>
+    <% end %>
+  ]
+}

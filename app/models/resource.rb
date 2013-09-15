@@ -20,7 +20,9 @@ class Resource < ActiveRecord::Base
                   :services_offered,
                   :people_served,
                   :accessibility,
-                  :notes
+                  :notes,
+                  :category,
+                  :category_id
 
   attr_accessible :geocoded_street_address, :geocoded_city_address, :geocoded_coordinates, :geocoded_zip, :as => :geocoder
 end
