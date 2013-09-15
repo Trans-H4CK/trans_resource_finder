@@ -324,7 +324,7 @@ $(document).ready(function() {
       switch (feature.properties.category.name) {
         case "Healthcare":
           url = "assets/bathroom.png";
-          url_open = "images/pinkBathroom.png";
+          url_open = "assets/pinkBathroom.png";
           break;
         case "Social":
           url = "assets/medical.png";
