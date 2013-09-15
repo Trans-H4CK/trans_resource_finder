@@ -8,7 +8,7 @@ postgresql: &postgresql
   min_messages: ERROR
   postgis_extension: true
   schema_search_path: public,postgis
-  su_username: gis     # substitute a superuser for the database
+  su_username: postgis     # substitute a superuser for the database
   su_password:   # substitute the superuser's password
 
 defaults: &defaults
