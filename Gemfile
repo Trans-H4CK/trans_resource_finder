@@ -14,7 +14,7 @@ gem 'activerecord-postgis-adapter'
 gem 'typhoeus'
 gem "will_paginate"
 gem 'virtus'
-
+gem 'nokogiri'
 gem 'active_model_serializers'
 
 group :development do
