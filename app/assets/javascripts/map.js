@@ -52,9 +52,16 @@ $(document).ready(function() {
   // Keep track of each marker.
   var markerArray =  new Array();
 
+  // Global variable that is passed around to prevent refresh from resizing.
+  var do_not_refresh = false;
   // Trigger json change on changing map.
   $(map).bind('moveend', function(event) {
-    get_json({}, false);
+    if (!do_not_refresh) {
+      get_json({}, false);
+    }
+    else {
+      do_not_refresh = false;
+    }
   });
   // Bind on chage to category to update json.
   var $category = $('[name=category]');
@@ -171,6 +178,7 @@ $(document).ready(function() {
 
           // Resize current map to fit all markers.
           if (resize) {
+            do_not_refresh = true;
             map.fitBounds(L.featureGroup(markerArray).getBounds());
           }
 
