@@ -7,7 +7,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 gem 'jquery-rails'
-gem 'bootstrap-sass'
 gem 'figaro'
 gem 'pg'
 gem 'rgeo'
