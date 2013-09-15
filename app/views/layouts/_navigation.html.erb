@@ -1,6 +1,6 @@
 <div class="width">
   <hgroup>
-    <h1>Trans*Resource US</h1>
+    <h1><%= link_to 'Trans*Resource US', root_path %></h1>
     <h2>Trans*Resource US allows users to add and discover services which empower and serve trans* and gender-variant people in their communities.</h2>
   </hgroup>
   <nav id="accessibility-links">
@@ -11,13 +11,11 @@
   </nav>
   <aside id="social">
     <ul>
-      <li id="social-fb"><a href="http://www.facebook.com/transresourceus" title="Find us on Facebook" target="_blank">Facebook</a></li>
-      <li id="social-tr"><a href="http://transresourceusa.tumblr.com" title="Follow us on Tumblr" target="_blank">Tumblr</a></li>
-      <li id="social-tw"><a href="http://www.twitter.com/transresourceus" title="Follow us on Twitter" target="_blank">Twitter</a></li>
-      <li id="social-gp"><a href="https://plus.google.com/111551895686856199646" rel="publisher">Google+</a></li>
-      <li id="social-yt"><a href="http://www.youtube.com/channel/UCJ_b34rhJHyNjcsogVzeQaA" title="Watch our videos on YouTube" target="_blank">YouTube</a></li>
-      <li id="social-fl"><a href="http://www.flickr.com/photos/101741545@N05/" title="Find us on Flickr" target="_blank">Flickr</a></li>
-      <li id="social-in"><a href="http://instagram.com/transresourceusa#" title="Find us on Instagram" target="_blank">Instagram</a></li>
+      <% @social_media_profiles.each do |profile| %>
+        <%= content_tag(:li, :id => "social-#{profile.short_name}" ) do %>
+          <%= link_to profile.name, profile.url, :target => "_blank", :title => profile.catchphrase %>
+        <% end %>
+      <% end %>
     </ul>
   </aside>
 </div>

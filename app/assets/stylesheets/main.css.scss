@@ -121,6 +121,11 @@ a:hover {
 }
 
 #branding h1 {
+  float:left;
+  margin: 0;
+}
+
+#branding h1 a {
 	display:block;
 	float:left;
 	width:399px;
