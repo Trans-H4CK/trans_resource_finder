@@ -23,6 +23,10 @@ describe Api::V1::ResourcesController do
     resource
   end
 
+  let! :point do
+    Rails.application.config.geocoder.geocode(:zipcode => 90401).geocoded_coordinates
+  end
+
   describe "GET index" do
     it "should return all results by default" do
       get :index
@@ -36,7 +40,7 @@ describe Api::V1::ResourcesController do
     end
 
     it "should return results in distance order" do
-      get :index, {:zip_code => "91423"}
+      get :index, {:lat => "-118.49411988441", :lon => "34.0141913752909" }
       assigns[:resources].first.should == resource_2
       assigns[:resources].last.should == resource_1
     end
