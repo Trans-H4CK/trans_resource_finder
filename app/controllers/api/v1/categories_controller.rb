@@ -1,5 +1,4 @@
-class Api::V1::CategoriesController < ApplicationController
-  respond_to :json
+class Api::V1::CategoriesController < ApiController
 
   def index
     @categories = Category.all

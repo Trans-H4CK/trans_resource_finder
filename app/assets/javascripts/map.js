@@ -55,7 +55,7 @@ $(document).ready(function() {
     get_json({}, false);
   });
   // Bind on chage to category to update json.
-  var $category = $('[name=categories]');
+  var $category = $('[name=category]');
   if (category = get_hash('category')) {
     $category.val(category);
   }
