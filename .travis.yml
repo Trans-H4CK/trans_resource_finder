@@ -1,15 +1,29 @@
 language: ruby
 rvm:
-- 1.9.3
+  - 1.9.3
+
 env:
-- DB=postgresql
+  - DB=postgresql
+
 script:
-- RAILS_ENV=test bundle exec rake db:migrate --trace
-- bundle exec rake db:test:prepare
-- bundle exec rake
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rake
+
+before_install:
+  # Install PostGIS 2.0
+  - sudo apt-add-repository ppa:ubuntugis/ubuntugis-stable
+  - sudo apt-get update
+  - sudo apt-get install -qq libgeos-dev libproj-dev postgresql-9.1-postgis
+  - sudo apt-get install -qq libgeos++-dev
+
 before_script:
-- cp config/database.travis.yml config/database.yml
-- psql -c 'create database trans_resource_finder_test' -U postgres
+  - cp config/database.travis.yml config/database.yml
+
+  # Create PostGIS extension
+  - createdb -U postgres trans_resource_finder_test
+  - psql -U postgres -d trans_resource_finder_test -c "CREATE EXTENSION postgis;"
+
 deploy:
   provider: heroku
   api_key:

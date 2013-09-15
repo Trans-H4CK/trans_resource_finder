@@ -1,10 +1,15 @@
 postgresql: &postgresql
-  adapter: postgresql
+  adapter: postgis
   encoding: unicode
+  reconnect: false
   username: postgres
   password:
   database: trans_resource_finder_<%= Rails.env %>
   min_messages: ERROR
+  postgis_extension: true
+  schema_search_path: public,gis
+  su_username: gis     # substitute a superuser for the database
+  su_password:   # substitute the superuser's password
 
 defaults: &defaults
   pool: 5
