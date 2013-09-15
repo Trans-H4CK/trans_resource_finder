@@ -25,6 +25,10 @@ class Api::V1::ResourcesController < ApplicationController
     else
       @resources = @resources.order('name ASC')
     end
+
+    @per_page = params[:per_page].try(:to_i) || 10
+    @resources = @resources.paginate(:page => params[:page], :per_page => 10)
+
   end
 
 end

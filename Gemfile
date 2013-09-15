@@ -13,6 +13,7 @@ gem 'pg'
 gem 'rgeo'
 gem 'activerecord-postgis-adapter'
 gem 'typhoeus'
+gem "will_paginate"
 
 gem 'active_model_serializers'
 
