@@ -7,7 +7,7 @@ class Resource < ActiveRecord::Base
 
   before_validation :geocode_address
 
-  validates_presence_of :name, :street_address_1, :city, :state, :zip
+  validates_presence_of :name, :street_address_1, :city, :state, :zip, :accessibility_rating, :trans_friendliness_rating, :service_quality_rating
 
   attr_accessible :name, :street_address_1, :street_address_2, :city, :state, :zip, :phone
 
