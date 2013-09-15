@@ -9,6 +9,16 @@
       <li><a href="#">Decrease Contrast</a></li>
     </ul>
   </nav>
+  <aside id="social-responsive">
+    <a href="#" class="social-toggle">Social Media +</a>
+    <ul>
+      <% @social_media_profiles.each do |profile| %>
+        <%= content_tag(:li, :id => "social-#{profile.short_name}" ) do %>
+          <%= link_to profile.name, profile.url, :target => "_blank", :title => profile.catchphrase %>
+        <% end %>
+      <% end %>
+    </ul>
+  </aside>
   <aside id="social">
     <ul>
       <% @social_media_profiles.each do |profile| %>
