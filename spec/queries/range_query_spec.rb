@@ -3,7 +3,7 @@ require 'spec_helper'
 describe RangeQuery, :type => :query do
 
   let! :point do
-    Rails.application.config.geocoder.geocode(:zipcode => 90401)
+    Rails.application.config.geocoder.geocode(:zipcode => 90401).geocoded_coordinates
   end
 
   let! :closer_resource do
