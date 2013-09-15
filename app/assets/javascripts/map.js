@@ -40,10 +40,12 @@ $(document).ready(function() {
     window.location.hash = hashArray.join('&');
   }
 
-  var map = L.map('map');
+  var map = L.map('map', {
+      scrollWheelZoom: false
+  });
   L.tileLayer('http://{s}.tile.cloudmade.com/c01de5b85a184db09d54b984c0a65a6e/997/256/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
-        maxZoom: 18
+        maxZoom: 18,
   }).addTo(map);
   map.fitWorld();
 

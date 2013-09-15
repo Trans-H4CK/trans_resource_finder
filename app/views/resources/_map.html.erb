@@ -8,7 +8,7 @@
           <%= select_tag 'category', options_from_collection_for_select(@categories, :name, :name), :prompt => "Category" %>
         </div>
         <div class="form-responsive-2">
-          <%= text_field_tag :zip, nil, :maxlength => 5, :placeholder => "Zip Code" %>
+          <%= text_field_tag :zip, nil, :maxlength => 5, :placeholder => "Zip Code", :pattern => "\\d*" %>
           <%= submit_tag "Go!" %>
         </div><!-- /form-responsive-2 -->
       </div><!-- /form-responsive -->
