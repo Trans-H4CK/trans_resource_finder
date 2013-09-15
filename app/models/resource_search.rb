@@ -6,7 +6,7 @@ class ResourceSearch
   include ActiveModel::Conversion
   include ActiveModel::Validations
 
-  attribute :per_page, String
+  attribute :per_page, String, :default => "10"
   attribute :page, String
   attribute :zip_code, String
   attribute :category, String
@@ -72,8 +72,7 @@ class ResourceSearch
   end
 
   def paginate_results
-    per_page = per_page.try(:to_i) || 10
-    @scope = @scope.paginate(:page => page, :per_page => per_page)
+    @scope = @scope.paginate(:page => page, :per_page => per_page.to_i)
   end
 
 end
