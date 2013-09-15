@@ -24,6 +24,10 @@ html {
   font-family: 'Lato', sans-serif;
 }
 
+label {
+  cursor: pointer;
+}
+
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
  * These selection rule sets have to be separate.
@@ -406,6 +410,75 @@ footer img[alt~=Creative] {
   float:right;
 }
 
+/* Form Styling */
+
+
+#main-section {
+text-align:center;
+}
+
+#main-section form {
+width:100%;
+max-width:500px;
+margin:0 auto;
+text-align:right;
+}
+
+#main-section input {
+width:50%;
+margin-bottom:15px;
+}
+
+#main-section select {
+width:51%;
+margin-bottom:15px;
+}
+
+#main-section label {
+clear:both;
+width:45%;
+}
+
+#main-section textarea {
+width:51%;
+height:5em;
+margin-bottom:15px;
+}
+
+#main-section input[type=submit] {
+float:right;
+width:52%;
+  display:block;
+  height:40px;
+  text-decoration:none;
+  padding:10px 15px;
+  margin-bottom:20px;
+  border-radius:5px;
+  font-weight:900;
+  background: #0071bc; /* Old browsers */
+background: -moz-linear-gradient(top,  #0071bc 0%, #29abe2 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#0071bc), color-stop(100%,#29abe2)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #0071bc 0%,#29abe2 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #0071bc 0%,#29abe2 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #0071bc 0%,#29abe2 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #0071bc 0%,#29abe2 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0071bc', endColorstr='#29abe2',GradientType=0 ); /* IE6-9 */
+border:2px solid #29ABE2;
+color:#fff;
+}
+
+#main-section input[type=submit]:hover {
+background: #ff7bac; /* Old browsers */
+background: -moz-linear-gradient(top,  #ff7bac 0%, #bf5c81 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff7bac), color-stop(100%,#bf5c81)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #ff7bac 0%,#bf5c81 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #ff7bac 0%,#bf5c81 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #ff7bac 0%,#bf5c81 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #ff7bac 0%,#bf5c81 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7bac', endColorstr='#bf5c81',GradientType=0 ); /* IE6-9 */
+border-color:#ff7bac;
+color:#fff;
+}
 
 
 /* ==========================================================================

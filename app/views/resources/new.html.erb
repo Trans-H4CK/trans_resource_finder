@@ -1,3 +1,6 @@
+<div class="width clearfix" id="main-section">
+  <h3>Add New Resource</h3>
+
 <%= form_for @resource do |f| %>
   <%= f.label :name %>:
   <%= f.text_field :name %><br />
@@ -6,13 +9,13 @@
   <%= f.collection_select( :category_id, Category.all, :id, :name) %><br />
 
   <%= f.label :accessibility_rating %>:
-  <%= f.number_field :accessibility_rating %><br />
+  <%= f.number_field :accessibility_rating, :min => "1", :max => "5" %><br />
 
   <%= f.label :trans_friendliness_rating %>:
-  <%= f.number_field :trans_friendliness_rating %><br />
+  <%= f.number_field :trans_friendliness_rating, :min => "1", :max => "5" %><br />
 
   <%= f.label :service_quality_rating %>:
-  <%= f.number_field :service_quality_rating %><br />
+  <%= f.number_field :service_quality_rating, :min => "1", :max => "5" %><br />
 
   <%= f.label :street_address_1%>:
   <%= f.text_field :street_address_1 %><br />
@@ -41,7 +44,7 @@
   <%= f.label :contact_name%>:
   <%= f.text_field :contact_name %><br />
 
-  <%= f.label :services_offerec%>:
+  <%= f.label :services_offered %>:
   <%= f.text_area :services_offered %><br />
 
   <%= f.label :people_served%>:
@@ -55,3 +58,5 @@
 
   <%= f.submit %>
 <% end %>
+
+</div>
