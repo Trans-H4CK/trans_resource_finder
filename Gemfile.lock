@@ -34,6 +34,7 @@ GEM
       multi_json (~> 1.0)
     addressable (2.3.5)
     arel (3.0.2)
+    backports (3.3.3)
     better_errors (1.0.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -69,6 +70,7 @@ GEM
       rails (>= 3.0.0)
     database_cleaner (1.0.1)
     debug_inspector (0.0.2)
+    descendants_tracker (0.0.1)
     diff-lcs (1.2.4)
     email_spec (1.5.0)
       launchy (~> 2.1)
@@ -181,6 +183,9 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    virtus (0.5.5)
+      backports (~> 3.3)
+      descendants_tracker (~> 0.0.1)
     will_paginate (3.0.4)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -213,4 +218,5 @@ DEPENDENCIES
   typhoeus
   uglifier (>= 1.0.3)
   unicorn
+  virtus
   will_paginate

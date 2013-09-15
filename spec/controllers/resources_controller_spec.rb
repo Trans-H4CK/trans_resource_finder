@@ -40,6 +40,7 @@ describe Api::V1::ResourcesController do
       assigns[:resources].first.should == resource_2
       assigns[:resources].last.should == resource_1
     end
+
   end
 
 end

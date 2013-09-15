@@ -19,5 +19,4 @@ class ResourcesController < ApplicationController
 
   end
 
-
 end

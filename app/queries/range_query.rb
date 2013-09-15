@@ -6,12 +6,7 @@ class RangeQuery
     @relation = relation
   end
 
-  def geocode(zip_code)
-    Rails.application.config.geocoder.geocode(:zipcode => zip_code)
-  end
-
-  def with_range_from(zip_code)
-    point = geocode(zip_code).geocoded_coordinates
+  def with_range_from(point)
 
     distance_in_meters = @relation.arel_table[:geocoded_coordinates].st_distance(point)
 

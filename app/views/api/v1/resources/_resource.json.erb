@@ -1,6 +1,7 @@
 {
   "type": "Feature",
   "properties": {
+    "id":               "<%= resource.id %>",
     "name":             "<%= resource.name %>",
     "street_address_1": "<%= resource.street_address_1 %>",
     "street_address_2": "<%= resource.street_address_2 %>",
@@ -21,8 +22,11 @@
     "category": {
       "id": <%= resource.category.id %>,
       "name": "<%= resource.category.name %>"
-    },
-    "distance": <%= '%.2f' % resource.range %>
+    }
+    <% if resource.respond_to?(:range) %>
+    ,
+    "distance": <%= '%.2f' % resource.range%>
+    <% end %>
   },
   "geometry": {
     "type": "Point",

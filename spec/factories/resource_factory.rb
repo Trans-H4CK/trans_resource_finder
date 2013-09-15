@@ -7,6 +7,8 @@ FactoryGirl.define do
     state "CA"
     zip "90029"
     sequence :phone do |n| "123-456-789#{n}" end
+    accessibility_rating 5
+    trans_friendliness_rating 5
+    service_quality_rating 5
   end
-
 end

@@ -35,11 +35,26 @@ class ResourceSearch
   private
 
   def current_location
+    if lat and lon
+      point(lat, lon)
+    elsif zip_code
+      geocode(zip_code).geocoded_coordinates
+    else
+      nil
+    end
+  end
+
+  def point(lat, lon)
+    RGeo::Geographic.simple_mercator_factory.point(lat, lon)
+  end
+
+  def geocode(zip_code)
+    Rails.application.config.geocoder.geocode(:zipcode => zip_code)
   end
 
   def match_categories
     if category
-      category_model = Category.where(:name => @category_string).first
+      category_model = Category.where(:name => category).first
       if category_model
         @scope = @scope.where(:category_id => category_model.id)
       end
