@@ -4,7 +4,7 @@
       <%= render 'resource', :resource => resource %> <%= ", " unless resource == @resources.last %>
     <% end %>
   ],
-  "current_page": <%= @resources.current_page %>,
+  "page": <%= @resources.current_page %>,
   "per_page": <%= @resources.per_page %>,
   "total_entries": <%= @resources.total_entries %>
 }

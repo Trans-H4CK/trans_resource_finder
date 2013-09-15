@@ -5,7 +5,7 @@
 </section><!-- /about -->
 <section id="map-section">
   <header class="clearfix">
-    <form action="" class="width">
+    <form id="locate" action="" class="width">
       <h3>Find trans-friendly services:</h3>
       <div class="form-responsive">
         <div class="styled-select">
@@ -30,13 +30,14 @@
   </header>
   <div id="map-container">
     <div id="map">
-      Map will go here.
     </div>
+    <div class="modal"><!-- Place at bottom of page --></div>
   </div>
 </section><!-- /map -->
-<section id="results">
+<section id="results" class="clearfix">
   <div class="width">
     <a href="#" class="add-resource">Add a resource + </a>
-    Placeholder for results
+    <div id="locations"></div>
+    <div id="pager"></div>
   </div>
 </section><!-- /results -->

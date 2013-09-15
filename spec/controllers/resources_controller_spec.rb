@@ -40,7 +40,7 @@ describe Api::V1::ResourcesController do
     end
 
     it "should return results in distance order" do
-      get :index, {:lat => "-118.49411988441", :lon => "34.0141913752909" }
+      get :index, {:lon => "-118.49411988441", :lat => "34.0141913752909" }
       assigns[:resources].first.should == resource_2
       assigns[:resources].last.should == resource_1
     end

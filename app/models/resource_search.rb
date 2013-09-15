@@ -45,7 +45,7 @@ class ResourceSearch
   end
 
   def point(lat, lon)
-    RGeo::Geographic.simple_mercator_factory.point(lat, lon)
+    "POINT(#{lon} #{lat})"
   end
 
   def geocode(zip_code)
