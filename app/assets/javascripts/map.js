@@ -306,34 +306,43 @@ $(document).ready(function() {
       return '<a href="#resource-' + location.properties.id  + '">' + location.properties.name + '</a>';
     }
 
-  function addColorChange(layer) {
-    layer.on('popupopen', function(e) {
-        var pinkBathroomIcon = L.icon({iconUrl: "/assets/pinkBathroom.png", iconSize: [32, 32]});
-        e.target.setIcon(pinkBathroomIcon);
-    });
-
-    layer.on('popupclose', function(e) {
-        var blueBathroomIcon = L.icon({iconUrl: "/assets/bathroom.png", iconSize: [32, 32]});
-        e.target.setIcon(blueBathroomIcon);
-    });
-  }
-
     function onEachFeature(feature, layer) {
       // does this feature have a property named popupContent?
       if (feature.properties && (location_popup = theme_resource_popup(feature))) {
         layer.bindPopup(location_popup);
       }
-
-    var bathroomIcon = L.icon({iconUrl: "assets/bathroom.png", iconSize: [32, 32]});
-    var medicalIcon = L.icon({iconUrl: "assets/medical.png", iconSize: [32, 32]});
-
-    if (feature.properties.category.name == "Healthcare") {
-        layer.setIcon(medicalIcon);
-    } else if (feature.properties.category.name == "Social") {
-        layer.setIcon(bathroomIcon);
-    }
+      addColorChange(feature, layer);
       // Keep track of the layer.
       markerArray.push(layer);
+    }
+
+  
+    function addColorChange(feature, layer) {
+      var url;
+      var url_open;
+      switch (feature.properties.category.name) {
+        case "Healthcare":
+          url = "assets/bathroom.png";
+          url_open = "images/pinkBathroom.png";
+          break;
+        case "Social":
+          url = "assets/medical.png";
+          break;
+      }
+
+      if (url) {
+        layer.setIcon( L.icon({iconUrl:url, iconSize: [32, 32]}));
+      }
+
+      if (url && url_open) {
+        layer.on('popupopen', function(e) {
+          layer.setIcon( L.icon({iconUrl: url_open, iconSize: [32, 32]}));
+        });
+        
+        layer.on('popupclose', function(e) {
+          layer.setIcon( L.icon({iconUrl: url, iconSize: [32, 32]}));
+        });
+      }
     }
   }
 });
