@@ -298,6 +298,7 @@ $(document).ready(function() {
         output += '<div class="resource-category"><span class="label">Category</span>: <span class="category">'
           + props.category.name + '</span></div>';
       }
+      output  += '<div class="resource-update"><a href="/resources/' + props.id + '/edit">Update</a></div>';
       output  +=  '</article>';
       return output;
     }
@@ -316,7 +317,7 @@ $(document).ready(function() {
       markerArray.push(layer);
     }
 
-  
+
     function addColorChange(feature, layer) {
       var url;
       var url_open;
@@ -338,7 +339,7 @@ $(document).ready(function() {
         layer.on('popupopen', function(e) {
           layer.setIcon( L.icon({iconUrl: url_open, iconSize: [32, 32]}));
         });
-        
+
         layer.on('popupclose', function(e) {
           layer.setIcon( L.icon({iconUrl: url, iconSize: [32, 32]}));
         });

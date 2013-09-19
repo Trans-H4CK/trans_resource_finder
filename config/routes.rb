@@ -8,5 +8,5 @@ TransResourceFinder::Application.routes.draw do
     end
   end
 
-  resources :resources, :only => [:create, :new, :index]
+  resources :resources, :only => [:create, :new, :index, :edit, :update]
 end

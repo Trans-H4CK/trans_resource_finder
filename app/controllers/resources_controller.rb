@@ -23,4 +23,27 @@ class ResourcesController < ApplicationController
 
   end
 
+  def edit
+    @resource = Resource.find(params[:id])
+  end
+
+  def update
+    @resource = Resource.find(params[:id])
+    respond_to do |format|
+      if @resource.update_attributes(params[:resource])
+        format.html{redirect_to :back, :notice => "Resource was sucessfully updated."}
+      else
+        flash[:error] = @resource.errors.full_messages.to_sentence
+        format.html {render :action => "edit"}
+      end
+
+    end
+  end
+
+  def destroy
+    @resource = Resource.find(params[:id])
+    @resource.delete
+    redirect_to resources_path
+  end
+
 end
