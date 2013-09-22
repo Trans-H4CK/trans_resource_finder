@@ -214,6 +214,7 @@ $(document).ready(function() {
       },
       dataType: 'json',
       error: function() {
+        $('#map-container').removeClass("loading");
         alert('Unable to fetch data. Sorry =(');
       }
     });
