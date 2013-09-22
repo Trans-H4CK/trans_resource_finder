@@ -19,14 +19,17 @@
     "accessibility_rating": <%= resource.accessibility_rating %>,
     "trans_friendliness_rating": <%= resource.trans_friendliness_rating %>,
     "service_quality_rating": <%= resource.service_quality_rating %>,
+    <% if resource.category %>
     "category": {
       "id": <%= resource.category.id %>,
       "name": "<%= resource.category.name %>"
-    }
-    <% if resource.respond_to?(:range) %>
-    ,
-    "distance": <%= '%.2f' % resource.range%>
+    },
     <% end %>
+    <% if resource.respond_to?(:range) %>
+    "distance": <%= '%.2f' % resource.range%>,
+    <% end %>
+    <%# @FIXME comma placement issues. seems like entire thing should be some sort of loop? %>
+    "bogus_entry": 0
   },
   "geometry": {
     "type": "Point",

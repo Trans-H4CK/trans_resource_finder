@@ -322,14 +322,16 @@ $(document).ready(function() {
     function addColorChange(feature, layer) {
       var url;
       var url_open;
-      switch (feature.properties.category.name) {
-        case "Healthcare":
-          url = "assets/bathroom.png";
-          url_open = "assets/pinkBathroom.png";
-          break;
-        case "Social":
-          url = "assets/medical.png";
-          break;
+      if (feature.properties.category) {
+        switch (feature.properties.category.name) {
+          case "Healthcare":
+            url = "assets/bathroom.png";
+            url_open = "assets/pinkBathroom.png";
+            break;
+          case "Social":
+            url = "assets/medical.png";
+            break;
+        }
       }
 
       if (url) {
