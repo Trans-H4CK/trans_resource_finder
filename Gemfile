@@ -16,6 +16,7 @@ gem "will_paginate"
 gem 'virtus'
 gem 'nokogiri'
 gem 'active_model_serializers'
+gem 'newrelic_rpm'
 
 group :development do
   gem 'better_errors'
